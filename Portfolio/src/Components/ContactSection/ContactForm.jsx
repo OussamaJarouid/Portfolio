@@ -18,42 +18,37 @@ const ContactForm = () => {
     resolver: yupResolver(contactMeScema),
   });
 
-  const onSumit = (data) => {
-    // Show loading toast if desired, but for now just success/error
-    axios
-      .post("http://localhost:3000/user/contact", data)
-      .then((response) => {
-        if (response.status) {
-          toast.success("Message Sent Successfully! 🚀", {
-            position: "bottom-center",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            theme: "dark",
-            style: {
-              background: "#1a1a1a",
-              color: "#fff",
-              border: "1px solid #00D8FF",
-            }
-          });
-          reset();
-        }
-      })
-      .catch((error) => {
-        console.error("ERROR:", error.response?.data || error.message);
-        toast.error("Failed to send message. Please try again.", {
-           position: "bottom-center",
-           autoClose: 3000,
-           theme: "dark"
-        });
+  const onSubmit = async (data) => {
+    try {
+      await axios.post("/api/contact", data);
+
+      toast.success("Message Sent Successfully! 🚀", {
+        position: "bottom-center",
+        autoClose: 3000,
+        theme: "dark",
+        style: {
+          background: "#1a1a1a",
+          color: "#fff",
+          border: "1px solid #00D8FF",
+        },
       });
+
+      reset();
+    } catch (error) {
+      console.error("ERROR:", error.response?.data || error.message);
+
+      toast.error("Failed to send message. Please try again.", {
+        position: "bottom-center",
+        autoClose: 3000,
+        theme: "dark",
+      });
+    }
   };
+
   return (
     <div>
       <form
-        onSubmit={handleSubmit(onSumit)}
+        onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col gap-6 mt-6"
       >
         <div>
@@ -65,6 +60,7 @@ const ContactForm = () => {
           />
           {errors.name && <ErrorHandler message={errors.name.message} />}
         </div>
+
         <div>
           <input
             type="email"
@@ -74,23 +70,25 @@ const ContactForm = () => {
           />
           {errors.email && <ErrorHandler message={errors.email.message} />}
         </div>
+
         <div>
           <textarea
-            id="message"
             placeholder="Enter your message"
             className="bg-lightBrown w-full rounded-xl p-4 text-white h-40 focus:outline-none focus:ring-2 focus:ring-cyan transition-all resize-none"
             {...register("userMessage")}
-          ></textarea>
+          />
           {errors.userMessage && (
             <ErrorHandler message={errors.userMessage.message} />
           )}
         </div>
+
         <Buttons
           type="submit"
           className="rounded-xl bg-orange h-14 text-xl font-bold hover:bg-orange/80 transition-all flex items-center justify-center gap-2"
         >
           Send Message <FaPaperPlane />
         </Buttons>
+
         <ToastContainer />
       </form>
     </div>
