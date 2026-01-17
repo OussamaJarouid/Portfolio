@@ -20,7 +20,7 @@ const ContactForm = () => {
 
   const onSubmit = async (data) => {
     try {
-      await axios.post("/api/app", data);
+      await axios.post("/api/contact", data);
 
       toast.success("Message Sent Successfully! 🚀", {
         position: "bottom-center",
