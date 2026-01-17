@@ -1,11 +1,12 @@
 import { Buttons } from "../../ui/Buttons";
-import { useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useForm } from "react-hook-form";
 import { contactMeScema } from "../../validation";
 import { yupResolver } from "@hookform/resolvers/yup";
 import ErrorHandler from "../../ErrorHandler";
+import { FaPaperPlane } from "react-icons/fa";
 
 const ContactForm = () => {
   const {
@@ -18,31 +19,48 @@ const ContactForm = () => {
   });
 
   const onSumit = (data) => {
+    // Show loading toast if desired, but for now just success/error
     axios
       .post("http://localhost:3000/user/contact", data)
       .then((response) => {
         if (response.status) {
-          console.log("Jello");
-          toast.success("Send Succesfullt");
-
+          toast.success("Message Sent Successfully! 🚀", {
+            position: "bottom-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            theme: "dark",
+            style: {
+              background: "#1a1a1a",
+              color: "#fff",
+              border: "1px solid #00D8FF",
+            }
+          });
           reset();
         }
       })
       .catch((error) => {
-        console.error("ERROR:", error.response?.data || error.message); //
+        console.error("ERROR:", error.response?.data || error.message);
+        toast.error("Failed to send message. Please try again.", {
+           position: "bottom-center",
+           autoClose: 3000,
+           theme: "dark"
+        });
       });
   };
   return (
     <div>
       <form
         onSubmit={handleSubmit(onSumit)}
-        className="flex flex-col gap-4 mt-4"
+        className="flex flex-col gap-6 mt-6"
       >
         <div>
           <input
             type="text"
-            className="bg-lightBrown w-full h-12 rounded-lg p-2 text-white "
-            placeholder="Enter the Full Name"
+            className="bg-lightBrown w-full h-14 rounded-xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-cyan transition-all"
+            placeholder="Enter your full name"
             {...register("name")}
           />
           {errors.name && <ErrorHandler message={errors.name.message} />}
@@ -50,30 +68,30 @@ const ContactForm = () => {
         <div>
           <input
             type="email"
-            className="bg-lightBrown w-full h-12 rounded-lg p-2 text-white "
-            placeholder="Enter the Email"
+            className="bg-lightBrown w-full h-14 rounded-xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-cyan transition-all"
+            placeholder="Enter your email"
             {...register("email")}
           />
           {errors.email && <ErrorHandler message={errors.email.message} />}
         </div>
         <div>
           <textarea
-            id=""
-            placeholder="Enter The Message"
-            className="bg-lightBrown w-full rounded-lg p-2 text-white h-30"
+            id="message"
+            placeholder="Enter your message"
+            className="bg-lightBrown w-full rounded-xl p-4 text-white h-40 focus:outline-none focus:ring-2 focus:ring-cyan transition-all resize-none"
             {...register("userMessage")}
           ></textarea>
           {errors.userMessage && (
             <ErrorHandler message={errors.userMessage.message} />
-          )} 
+          )}
         </div>
         <Buttons
           type="submit"
-          className="rounded-lg bg-cyan h-12 text-xl hover:bg-darkCyan"
+          className="rounded-xl bg-orange h-14 text-xl font-bold hover:bg-orange/80 transition-all flex items-center justify-center gap-2"
         >
-          Send
+          Send Message <FaPaperPlane />
         </Buttons>
-        <ToastContainer position="bottom-center" autoClose={3000} />
+        <ToastContainer />
       </form>
     </div>
   );

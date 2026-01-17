@@ -1,27 +1,32 @@
 import { NavLinks } from "./NavBarItems";
 import { Link } from "react-scroll";
-export default function NavbarLinks() {
+
+const NavbarLinks = () => {
   return (
-    <ul className="flex gap-6  text-white lg:mt-0 sm:py-4 mt-16 lg:space-x-10 lg:flex-row sm:flex-col lg:relative sm:absolute left-[50%] -translate-x-[50%]  lg:text-md sm:text-xl sm:w-full  sm:bg-cyan/30 backdrop-blur-lg lg:bg-black">
+    <ul className="flex flex-col lg:flex-row gap-8 lg:gap-12 text-white items-center">
       {NavLinks.map((links, idx) => {
         return (
           <li
             key={idx}
-            className="hover:text-cyan group cursor-pointer scale-110 transition-all duration-500 text-center"
+            className="group relative cursor-pointer"
           >
             <Link
               to={links.section}
               spy={true}
-              offset={-130}
               smooth={true}
+              offset={-100}
               duration={500}
+              activeClass="text-cyan font-bold"
+              className="text-xl lg:text-lg font-medium hover:text-cyan transition-colors duration-300 block py-2"
             >
               {links.Link}
             </Link>
-            <div className="mw-auto w-0 bg-cyan group-hover:w-full h-[1px] transition-all duration-500"></div>
+             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan transition-all duration-300 group-hover:w-full"></span>
           </li>
         );
       })}
     </ul>
   );
-}
+};
+
+export default NavbarLinks;

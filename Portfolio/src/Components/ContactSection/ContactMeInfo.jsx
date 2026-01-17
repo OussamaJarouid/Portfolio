@@ -8,7 +8,7 @@ const ContactMeInfo = () => {
   const contactInfos = [
     { text: "0621039442", icon: PiPhone },
     { text: "oussamajarouide110@gmail.com", icon: CiMail },
-    { text: "Morocco, Agdir Cite My Rachid ", icon: IoLocationOutline },
+    { text: "Morocco, Agadir, Cité My Rachid ", icon: IoLocationOutline },
   ];
   return (
     <div className="flex flex-col gap-4 text-white mt-7">

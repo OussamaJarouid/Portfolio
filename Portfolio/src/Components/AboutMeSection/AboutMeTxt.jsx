@@ -28,7 +28,11 @@ const AboutMeTxt = () => {
         write scalable, maintainable code and deliver polished user experiences.
       </p>
 
-      <Buttons className="mt-[20px]">My Projects</Buttons>
+      <Buttons className="mt-[20px] w-full">
+        <a href="https://github.com/OussamaJarouid/" target="_blank">
+          My Projects
+        </a>
+      </Buttons>
     </div>
   );
 };

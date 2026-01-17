@@ -1,44 +1,13 @@
 import React from "react";
 import ProjectsTxt from "./ProjectsTxt";
 import SingleProject from "./SingleProject";
+import ProjectDetails from "./ProjectsData";
 
 const ProjectsMain = () => {
-  const ProjectDetails = [
-    {
-      name: "Full Stack E-commerce",
-      year: "May,2025",
-      image: "images/EccomerceProjectImg.png",
-      aligne: "left",
-    },
-    {
-      name: "Full Stack E-commerce",
-      year: "May,2025",
-      image: "images/EccomerceProjectImg.png",
-      aligne: "right",
-    },
-    {
-      name: "Full Stack E-commerce",
-      year: "May,2025",
-      image: "images/EccomerceProjectImg.png",
-      aligne: "left",
-    },
-    {
-      name: "Full Stack E-commerce",
-      year: "May,2025",
-      image: "images/EccomerceProjectImg.png",
-      aligne: "right",
-    },
-    {
-      name: "Full Stack E-commerce",
-      year: "May,2025",
-      image: "images/EccomerceProjectImg.png",
-      aligne: "left",
-    },
-  ];
   return (
-    <div id="projects" className="max-w-[1200px] px-4 mx-auto mt-[100px]">
+    <div id="projects" className="max-w-[1200px] px-4 mx-auto mt-[100px] mb-20">
       <ProjectsTxt />
-      <div className="flex flex-col gap-20 max-w-[900px] mx-auto mt-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
         {ProjectDetails.map((item, idx) => {
           return (
             <SingleProject
@@ -47,6 +16,7 @@ const ProjectsMain = () => {
               image={item.image}
               year={item.year}
               aligne={item.aligne}
+              link={item.link}
             />
           );
         })}

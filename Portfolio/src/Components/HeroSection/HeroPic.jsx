@@ -4,7 +4,7 @@ export const HeroPic = () => {
   return (
     <div className="h-full flex justify-center items-center">
       <img
-        src="../../images/MyImage.png"
+        src="images/MyImage.png"
         width={"200px"}
         alt="Oussama Jarouid"
         className="max-h-[450px] w-auto"

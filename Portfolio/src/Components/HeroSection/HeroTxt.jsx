@@ -4,7 +4,7 @@ import { Buttons } from "../../ui/Buttons";
 export const HeroTxt = () => {
   const downloadFile = () => {
     const link = document.createElement("a");
-    link.href = "/CV/CV.pdf";
+    link.href = "CV/CV.pdf";
     link.download = "OussamJarouidCV.pdf";
     document.body.appendChild(link);
     link.click();
@@ -13,7 +13,7 @@ export const HeroTxt = () => {
   return (
     <div className="flex flex-col gap-4 h-full justify-center md:text-left sm:text-center">
       <h2 className="lg:text-2xl sm:text-xl uppercase text-cyan">
-        Developpeur Web Front End
+        Front-End Web Developer
       </h2>
       <h1 className="md:text-[2.8rem] lg:text-6xl sm:text-4xl font-bold font-special text-orange">
         Oussama Jarouid
@@ -25,8 +25,8 @@ export const HeroTxt = () => {
         to internship or job opportunities.
       </p>
       <div className="flex sm:justify-center md:justify-start">
-        <Buttons className="w-[200px]" onClick={downloadFile}>
-          <span>Download CV</span>
+        <Buttons className="w-[300px]" onClick={downloadFile}>
+          <span>Download My Resume </span>
           <HiOutlineDownload className="sm:hidden md:block" size={20} />
         </Buttons>
       </div>

@@ -1,11 +1,13 @@
-import { FaHtml5 } from "react-icons/fa";
-import { FaCss3Alt } from "react-icons/fa";
+import {
+  FaHtml5,
+  FaCss3Alt,
+  FaWordpressSimple,
+  FaNodeJs,
+} from "react-icons/fa";
 import { IoLogoJavascript } from "react-icons/io";
-import { RiReactjsLine } from "react-icons/ri";
+import { RiNextjsFill, RiReactjsLine, RiTailwindCssFill } from "react-icons/ri";
 import { TbBrandRedux } from "react-icons/tb";
-import { RiTailwindCssFill } from "react-icons/ri";
-import { SiChakraui } from "react-icons/si";
-import { SiTypescript } from "react-icons/si";
+import { SiChakraui, SiMongodb, SiMysql, SiPostgresql, SiTypescript } from "react-icons/si";
 
 export const Skills = [
   { skill: "HTML", icon: FaHtml5 },
@@ -13,7 +15,13 @@ export const Skills = [
   { skill: "JavaScript", icon: IoLogoJavascript },
   { skill: "TypeScript", icon: SiTypescript },
   { skill: "ReactJS", icon: RiReactjsLine },
+  { skill: "NextJS", icon: RiNextjsFill },
   { skill: "Redux", icon: TbBrandRedux },
   { skill: "TailwindCSS", icon: RiTailwindCssFill },
   { skill: "ChakraUI", icon: SiChakraui },
+  { skill: "NodeJS", icon: FaNodeJs },
+  { skill: "MongoDB", icon: SiMongodb },
+  { skill: "MySQL", icon: SiMysql },
+  { skill: "PostgreSQL", icon: SiPostgresql },
+  { skill: "WordPress", icon: FaWordpressSimple },
 ];

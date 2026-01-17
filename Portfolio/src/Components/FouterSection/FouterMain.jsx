@@ -21,7 +21,7 @@ export const FouterMain = () => {
         </ul>
       </div>
       <p className=" max-w-[1200px] mx-auto text-right  text-sm mt-2 mb-12 text-lightBrown">
-        @2025 oussama jarouid | all Rights Reserved.
+        © 2025 Oussama Jarouid | All rights reserved.
       </p>
     </div>
   );
